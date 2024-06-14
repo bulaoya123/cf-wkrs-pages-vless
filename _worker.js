@@ -3,14 +3,19 @@
 import { connect } from 'cloudflare:sockets';
 
 // 建议修改为自己的 UUID
-let userID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
+let userID = 'e40894fd-b380-4df5-aafb-5c1f8befa918';
 
 // 生成配置文件的 CF 优选 IP
 const bestCFIP = "www.gov.se"
 
 // 用于 CF 网站的代理 IP
-const proxyIPs = ["workers.cloudflare.cyou"]; // const proxyIPs = ['cdn-all.xn--b6gac.eu.org', 'cdn.xn--b6gac.eu.org', 'cdn-b100.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org', 'cdn.anycast.eu.org'];
+// const proxyIPs = ["workers.cloudflare.cyou"]; // const proxyIPs = ['cdn-all.xn--b6gac.eu.org', 'cdn.xn--b6gac.eu.org', 'cdn-b100.xn--b6gac.eu.org', 'edgetunnel.anycast.eu.org', 'cdn.anycast.eu.org'];
+// let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
+
+const proxyIPs = ['162.159.192.156'];
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
+
+let yxPort = 3581;
 
 let dohURL = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg='; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
 
@@ -194,7 +199,7 @@ async function vlessOverWSHandler(request) {
             const {
                 hasError,
                 message,
-                portRemote = 443,
+                portRemote = yxPort,
                 addressRemote = '',
                 rawDataIndex,
                 vlessVersion = new Uint8Array([0, 0]),
